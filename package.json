@@ -1,0 +1,56 @@
+{
+  "name": "auditframe",
+  "version": "1.0.0",
+  "description": "Auditor-grade screenshot and evidence capture",
+  "main": "dist/main/index.js",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build:main": "node scripts/build-main.mjs",
+    "build:renderer": "vite build",
+    "build": "npm run build:main && npm run build:renderer",
+    "start": "npm run build && electron .",
+    "typecheck": "tsc -p tsconfig.node.json --noEmit && tsc -p tsconfig.web.json --noEmit",
+    "test": "vitest run",
+    "dist": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "esbuild": "^0.24.0",
+    "postcss": "^8.4.49",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.16",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  },
+  "build": {
+    "appId": "com.auditframe.app",
+    "productName": "AuditFrame",
+    "files": ["dist/**", "package.json"],
+    "asarUnpack": ["**/node_modules/sharp/**", "**/node_modules/@img/**"],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": ["dmg"],
+      "extendInfo": {
+        "NSLocationUsageDescription": "AuditFrame records the device location in evidence metadata when you enable it.",
+        "NSLocationWhenInUseUsageDescription": "AuditFrame records the device location in evidence metadata when you enable it.",
+        "NSScreenCaptureUsageDescription": "AuditFrame captures screenshots as audit evidence."
+      }
+    },
+    "win": { "target": ["nsis"] },
+    "linux": { "target": ["AppImage"], "category": "Utility" }
+  }
+}

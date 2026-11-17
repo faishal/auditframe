@@ -1,0 +1,40 @@
+# AuditFrame v1 — Tasks
+
+- [x] 1. Scaffold project
+  - [x] 1.1 package.json, tsconfig (main/preload/renderer/shared), Vite renderer config (two HTML entries: app + overlay), Tailwind/PostCSS, vitest, electron-builder config (R6, R7)
+  - [x] 1.2 Build scripts: esbuild bundle for main + preload, `dev`, `build`, `test`, `typecheck`
+- [x] 2. Shared contracts (R7.2, R8)
+  - [x] 2.1 Types, defaults, zod schemas, IPC channel map
+  - [x] 2.2 v2 interfaces and no-op PipelineHooks
+- [x] 3. Main process foundation
+  - [x] 3.1 App lifecycle, Linux PipeWire flag, secure BrowserWindow factory, CSP, nav blocking
+  - [x] 3.2 Settings store with validation
+  - [x] 3.3 IPC registration with sender and payload validation; preload bridge
+  - [x] 3.4 Tray menu and global shortcuts (R1.2)
+  - [x] 3.5 macOS permission helpers (R6.1)
+- [x] 4. TimeService (R2) with unit tests
+  - [x] 4.1 SNTP codec + UDP client
+  - [x] 4.2 HTTPS fallback, local fallback, source tagging
+  - [x] 4.3 Timestamp formatter (UTC/local/format)
+- [x] 5. LocationService (R3)
+  - [x] 5.1 OS geolocation via renderer helper, error mapping
+  - [x] 5.2 IP fallback and optional label
+- [x] 6. CaptureService (R1) with coordinate-math tests
+  - [x] 6.1 Screen, all (stitch/individual), window listing + capture
+  - [x] 6.2 Region overlay windows, selection, crop with scaleFactor
+  - [x] 6.3 CapturePipeline orchestration
+- [x] 7. ComposerService (R4) with layout tests
+  - [x] 7.1 Banner layout/wrapping
+  - [x] 7.2 Append banner (4 positions) and watermark overlay
+- [x] 8. EvidenceVaultService (R5) with tests
+  - [x] 8.1 Save PNG + sidecar + raw; history index
+  - [x] 8.2 Verify hashes; clipboard copy
+- [x] 9. Renderer UI (R1–R5)
+  - [x] 9.1 App shell, capture panel, window picker, permission banner
+  - [x] 9.2 Review view: live preview + stamp controls
+  - [x] 9.3 Settings dialog
+  - [x] 9.4 History sidebar with verify
+  - [x] 9.5 Region overlay UI
+- [x] 10. Docs and verification
+  - [x] 10.1 README with platform notes and manual QA checklist
+  - [x] 10.2 Typecheck, unit tests, build pass
